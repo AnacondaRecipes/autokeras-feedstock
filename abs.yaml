@@ -2,3 +2,4 @@ channels:
   - build/label/build
   - https://staging.continuum.io/pbp/fs/tensorflow-feedstock/pr14/b2f25b0
   - https://staging.continuum.io/pbp/fs/keras-tuner-feedstock/pr5/ea7c62c
+  - https://staging.continuum.io/pbp/fs/dm-tree-feedstock/pr6/778897c
