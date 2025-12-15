@@ -1,5 +1,5 @@
 {% set name = "autokeras" %}
-{% set version = "1.0.20" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,38 +7,45 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/autokeras-{{ version }}.tar.gz
-  sha256: 3d0f09629abb9b98f9059e3c8b9d39b4acd7f6dcde6d0584146a02035159141a
+  sha256: be79696f3309617695f134309847dc3cf7a33abd12db8aabbd4eb8d67c3a9539
 
 build:
   number: 0
-  noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
   run:
-    - python >=3.7
+    - python
     - packaging
     - tensorflow >=2.8.0
-    - keras-tuner >=1.1.0
-    - pandas
+    - keras-tuner >=1.4.0
+    - keras >=3.0.0
+    - dm-tree
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - autokeras
     - autokeras.graph
     - autokeras.keras_layers
     - autokeras.preprocessors
-    - benchmark
 
 about:
-  home: http://autokeras.com
+  home: https://autokeras.com
   summary: AutoML for deep learning
+  description: |
+    AutoKeras is an AutoML library for deep learning that automates neural architecture 
+    search and hyperparameter optimization. Built on Keras, it provides high-level 
+    interfaces for building deep learning models without extensive ML expertise.
   license: Apache-2.0
   license_file: LICENSE
-  doc_url: http://autokeras.com
+  doc_url: https://autokeras.com
   dev_url: https://github.com/keras-team/autokeras
 
 extra:
