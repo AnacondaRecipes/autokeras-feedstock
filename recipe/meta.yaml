@@ -10,7 +10,7 @@ source:
   sha256: be79696f3309617695f134309847dc3cf7a33abd12db8aabbd4eb8d67c3a9539
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
@@ -20,7 +20,6 @@ requirements:
   run:
     - python
     - packaging
-    - tensorflow >=2.8.0
     - keras-tuner >=1.4.0
     - keras >=3.0.0
     - dm-tree
