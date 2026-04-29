@@ -17,6 +17,7 @@ requirements:
   host:
     - python
     - pip
+    - setuptools >=61.0
   run:
     - python
     - packaging
@@ -27,13 +28,10 @@ requirements:
 test:
   requires:
     - pip
+    - pytorch
   commands:
     - pip check
-  imports:
-    - autokeras
-    - autokeras.graph
-    - autokeras.keras_layers
-    - autokeras.preprocessors
+    - python -c "import os; os.environ['KERAS_BACKEND']='torch'; import autokeras, autokeras.graph, autokeras.keras_layers, autokeras.preprocessors"
 
 about:
   home: https://autokeras.com
@@ -44,9 +42,12 @@ about:
     interfaces for building deep learning models without extensive ML expertise.
   license: Apache-2.0
   license_file: LICENSE
+  license_family: Apache
   doc_url: https://autokeras.com
   dev_url: https://github.com/keras-team/autokeras
 
 extra:
+  skip-lints:
+    - missing_imports_or_run_test_py # import tests in commands section
   recipe-maintainers:
     - Anselmoo
